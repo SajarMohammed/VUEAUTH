@@ -35,3 +35,9 @@ npm run lint
 ```
 
 Yup with vee-validate for Validation
+
+### Yup and vee-validate installation
+
+```sh
+ npm install vee-validate yup @vee-validate/yup
+```
