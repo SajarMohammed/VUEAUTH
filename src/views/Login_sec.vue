@@ -104,10 +104,17 @@ const onSubmit = () =>{
         loginError.value="no such credentials"
         return;
      }
-        const {email : storedEmail , password : storedPassword} = JSON.parse(storedData);
+      
+     const users = JSON.parse(storedData);
+
+     const userExists = users.some(user => user.email === email.value && user.password == password.value)
+     
+        // const {email : storedEmail , password : storedPassword} = JSON.parse(storedData);
         
-   if ( storedEmail === email.value && storedPassword=== password.value){
-      router.push('/home')
+//    if ( storedEmail === email.value && storedPassword=== password.value){
+//       router.push('/home')
+   if(userExists){
+     router.replace('/home')
    }else{
        loginError.value = "invalid email or password"
    }

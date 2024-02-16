@@ -63,8 +63,11 @@ const { errors, defineField, handleSubmit } = useForm({
 })
 
 const onSubmit= handleSubmit((values)=>{
-    localStorage.setItem('formData', JSON.stringify(values))
-    router.push("/login")
+  const existingData= localStorage.getItem("formData")
+    const dataArray = existingData ? JSON.parse(existingData) : [];
+    dataArray.push(values);
+    localStorage.setItem('formData', JSON.stringify(dataArray))
+    router.replace("/login")
 })
 const [username, usernameAttrs] = defineField('username', {
   validateOnModelUpdate: true
